@@ -3,6 +3,7 @@ import Home from "./Home";
 import Login from "./Login";
 import DefaultLayout from "../layouts/DefaultLayout";
 import PanelLayout from "../layouts/PanelLayout";
+import Signup from "./Signup";
 
 // Route Views
 const routes = [
@@ -11,6 +12,11 @@ const routes = [
     exact: true,
     layout: AuthLayout,
     component: Login,
+  },  {
+    path: "/signup",
+    exact: true,
+    layout: AuthLayout,
+    component: Signup,
   },
   {
     path: "/index.html",
