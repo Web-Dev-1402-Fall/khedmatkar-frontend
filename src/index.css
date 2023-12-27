@@ -1,14 +1,89 @@
+@font-face {
+  font-family: iranyekan;
+  font-style: normal;
+  font-weight: normal;
+  src: url("./assets/fonts/farsi/eot/IRANYekanWebRegular.eot");
+  src:
+    url("./assets/fonts/farsi/woff/IRANYekanWebRegular.woff") format("woff"),
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+      url("./assets/fonts/farsi/woff2/IRANYekanWebRegular.woff2")
+      format("woff2"),
+    /* FF39+,Chrome36+, Opera24+*/
+      url("./assets/fonts/farsi/ttf/IRANYekanWebRegular.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: iranyekan;
+  font-style: normal;
+  font-weight: 500;
+  src: url("./assets/fonts/farsi/eot/IRANYekanWebMedium.eot");
+  src:
+    url("./assets/fonts/farsi/woff/IRANYekanWebMedium.woff") format("woff"),
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+      url("./assets/fonts/farsi/woff2/IRANYekanWebMedium.woff2") format("woff2"),
+    /* FF39+,Chrome36+, Opera24+*/
+      url("./assets/fonts/farsi/ttf/IRANYekanWebMedium.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: iranyekan;
+  font-style: normal;
+  font-weight: bold;
+  src: url("./assets/fonts/farsi/eot/IRANYekanWebBold.eot");
+  src:
+    url("./assets/fonts/farsi/woff/IRANYekanWebBold.woff") format("woff"),
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+      url("./assets/fonts/farsi/woff2/IRANYekanWebBold.woff2") format("woff2"),
+    /* FF39+,Chrome36+, Opera24+*/
+      url("./assets/fonts/farsi/ttf/IRANYekanWebBold.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: iranyekan;
+  font-style: normal;
+  font-weight: 800;
+  src: url("./assets/fonts/farsi/eot/IRANYekanWebExtraBold.eot");
+  src:
+    url("./assets/fonts/farsi/woff/IRANYekanWebExtraBold.woff") format("woff"),
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+      url("./assets/fonts/farsi/woff2/IRANYekanWebExtraBold.woff2")
+      format("woff2"),
+    /* FF39+,Chrome36+, Opera24+*/
+      url("./assets/fonts/farsi/ttf/IRANYekanWebExtraBold.ttf")
+      format("truetype");
+  font-display: swap;
+}
+
 @tailwind base;
+
+@layer base {
+  html {
+    font-family: iranyekan, serif !important;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
+
 @tailwind components;
 @tailwind utilities;
 
-@import "bootstrap/dist/css/bootstrap.min.css";
-@import "react-toastify/dist/ReactToastify.css";
-@font-face {
-  font-family: "B-Nazanin";
-  src: local("B-Nazanin"), url(./assets/fonts/B-Nazanin.ttf) format("truetype");
-}
-.font-link {
-  font-family: "B-Nazanin";
-  font-weight: bold;
+@layer utilities {
+  .ltr {
+    direction: ltr;
+  }
+
+  .rtl {
+    direction: rtl;
+  }
 }

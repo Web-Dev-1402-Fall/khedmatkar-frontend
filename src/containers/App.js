@@ -1,8 +1,11 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import routes from "./routes";
+import { AuthProvider } from "../providers/authProvider";
+
 function App() {
   return (
+    <AuthProvider>
       <Routes>
         {routes.map((route, index) => {
           return (
@@ -11,14 +14,14 @@ function App() {
               path={route.path}
               exact={route.exact}
               element={
-                // <route.layout>
+                <route.layout>
                   <route.component />
-                // {/* </route.layout> */}
+                </route.layout>
               }
             />
           );
         })}
-      </Routes>
+      </Routes></AuthProvider>
   );
 }
 

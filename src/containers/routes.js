@@ -1,27 +1,32 @@
-// Layout Types
-// import { DefaultLayout } from "../layouts";
+import AuthLayout from "../layouts/AuthLayout";
 import Home from "./Home";
+import Login from "./Login";
+import DefaultLayout from "../layouts/DefaultLayout";
+import PanelLayout from "../layouts/PanelLayout";
 
 // Route Views
-
-
-
 const routes = [
   {
-    path: "/",
+    path: "/login",
     exact: true,
-    // layout: DefaultLayout,
-    component: Home,
+    layout: AuthLayout,
+    component: Login,
   },
   {
     path: "/index.html",
     exact: true,
-    // layout: DefaultLayout,
+    layout: DefaultLayout,
+    component: Home,
+  },
+  {
+    path: "/panel",
+    exact: true,
+    layout: PanelLayout,
     component: Home,
   },
   {
     path: "*",
-    // layout: DefaultLayout,
+    layout: DefaultLayout,
     component: Home,
   },
 ];
