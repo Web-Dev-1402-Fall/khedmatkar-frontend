@@ -19,7 +19,7 @@ const routes = [
     component: Home,
   },
   {
-    path: "/panel",
+    path: "/panel/*",
     exact: true,
     layout: PanelLayout,
     component: Home,
