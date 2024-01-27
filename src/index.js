@@ -9,7 +9,7 @@ import { RecoilRoot } from "recoil";
 
 axios.defaults.withCredentials = true;
 axios.defaults.xsrfCookieName = "csrftoken";
-axios.defaults.xsrfHeaderName = "x-csrftoken";
+axios.defaults.xsrfHeaderName = "X-CSRFToken";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

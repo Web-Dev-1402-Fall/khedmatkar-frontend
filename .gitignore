@@ -21,3 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+/.vscode/easycode.ignore
+/.idea/codeStyles/codeStyleConfig.xml
+/.idea/.gitignore
+/.idea/khedmatkar-frontend.iml
+/.idea/vcs.xml

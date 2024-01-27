@@ -3,6 +3,8 @@ import TextInput from "../components/TextInput";
 import Button from "../components/Button";
 import { METHOD_POST, sendRequest } from "../common/axiosRequest";
 import urls from "../common/urls";
+import { useToast } from "../providers/toastProvider";
+import { useNavigate } from "react-router-dom";
 
 const fields = [{
   name: "username", label: "نام‌کاربری", rules: {
@@ -16,13 +18,21 @@ const fields = [{
   }
 }];
 const LoginForm = () => {
+  const { showToast } = useToast();
+  const navigate = useNavigate();
   const {
     control, handleSubmit, formState: { errors, isSubmitting, isValid }
   } = useForm({ mode: "onChange" });
 
   const submit = (data) => {
-    console.log(data);
-    loginRequest(data.username, data.password);
+    loginRequest(data.username, data.password).then(response => {
+      if (response.isSuccess) {
+        console.log('panel')
+        navigate("/panel");
+      } else {
+        showToast(response.message, "red");
+      }
+    });
   };
 
   return (<div>
@@ -57,7 +67,10 @@ const LoginForm = () => {
 };
 
 async function loginRequest(username, password) {
-  await sendRequest(urls.auth.login(), METHOD_POST, { "username": username, "password": password });
+  return await sendRequest(urls.auth.login(), METHOD_POST, {
+    "username": username,
+    "password": password
+  });
 }
 
 export default LoginForm;
