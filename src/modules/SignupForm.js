@@ -9,14 +9,15 @@ const fields = [
     name: "first_name",
     label: "نام",
     rules: {
-      required: "این فیلد اجباری است"
-    }
-  }, {
+      required: "این فیلد اجباری است",
+    },
+  },
+  {
     name: "last_name",
     label: "نام خانوادگی",
     rules: {
-      required: "این فیلد اجباری است"
-    }
+      required: "این فیلد اجباری است",
+    },
   },
   {
     name: "email",
@@ -25,15 +26,16 @@ const fields = [
       required: "این فیلد اجباری است",
       pattern: {
         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-        message: "مقدار ورودی معتبر نیست"
-      }
-    }
-  }, {
+        message: "مقدار ورودی معتبر نیست",
+      },
+    },
+  },
+  {
     name: "username",
     label: "نام‌کاربری",
     rules: {
-      required: "این فیلد اجباری است"
-    }
+      required: "این فیلد اجباری است",
+    },
   },
   {
     name: "password",
@@ -42,17 +44,17 @@ const fields = [
       required: "این فیلد اجباری است",
       minLength: {
         value: 6,
-        message: "حداقل طول رمز عبور ۶ کاراکتر است"
-      }
-    }
-  }
+        message: "حداقل طول رمز عبور ۶ کاراکتر است",
+      },
+    },
+  },
 ];
 
 const SignupForm = () => {
   const {
     control,
     handleSubmit,
-    formState: { errors, isSubmitting, isValid }
+    formState: { errors, isSubmitting, isValid },
   } = useForm({ mode: "onChange" });
 
   const submit = (data) => {
@@ -85,10 +87,41 @@ const SignupForm = () => {
           )}
         />
       ))}
+      <Controller
+        name="type"
+        control={control}
+        defaultValue="customer" // Set the default value if needed
+        rules={{ required: "نوع حساب خود را مشخص کنید." }}
+        render={({ field: { value, onChange, onBlur, name } }) => (
+          <div className="inline-flex justify-between">
+            <input
+              type="radio"
+              id="customer"
+              value="customer"
+              defaultChecked={true}
+              checked={value === "customer"}
+              onClick={() => onChange("customer")}
+              className="ml-4 mr-2"
+            />
+            <label className="text-sm">مشتری</label>
+
+            <input
+              type="radio"
+              id="specialist"
+              value="specialist"
+              className="ml-4 mr-2"
+              checked={value === "specialist"}
+              onClick={() => onChange("specialist")}
+            />
+            <label className="text-sm">متخصص</label>
+          </div>
+        )}
+      />
       <Button
         className="my-4 w-full"
         disabled={!isValid || isSubmitting}
-        onClick={handleSubmit(submit)}>
+        onClick={handleSubmit(submit)}
+      >
         ثبت‌نام
       </Button>
     </div>

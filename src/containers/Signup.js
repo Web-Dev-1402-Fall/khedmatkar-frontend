@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import SignupForm from "../modules/SignupForm";
 
 export default function Signup() {
-  return <div className="flex flex-col w-full max-w-[350px]">
+  return <div className="flex flex-col w-full max-w-96 py-10">
     <h1 className="text-2xl font-bold mb-6">ثبت‌نام</h1>
     <span className="text-sm mb-1">سلام!</span>
     <span className="text-sm mb-4">لطفا اطلاعات خود را وارد کنید</span>
