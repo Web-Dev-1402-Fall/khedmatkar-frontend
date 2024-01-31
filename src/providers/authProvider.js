@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import urls from "../common/urls";
 import { useFetch } from "../utils/useFetch";
+import urls from "../api/urls";
 
 const context = React.createContext();
 
@@ -11,12 +11,12 @@ const AuthProvider = ({ children }) => {
   const [logoutState, setLogoutState] = useState(() => ({
     loading: false,
     error: undefined,
-    success: false,
+    success: false
   }));
   const [user, setUser] = useState(() => ({
     isLoading: loading,
     isAuthenticated: window.localStorage.getItem("user"),
-    data: JSON.parse(window.localStorage.getItem("user")),
+    data: JSON.parse(window.localStorage.getItem("user"))
   }));
 
   useEffect(() => {
@@ -25,14 +25,14 @@ const AuthProvider = ({ children }) => {
       setUser({
         isLoading: loading,
         isAuthenticated: false,
-        data: data,
+        data: data
       });
-    } else if(!loading && data) {
+    } else if (!loading && data) {
       window.localStorage.setItem("user", JSON.stringify(data));
       setUser({
         isLoading: loading,
         isAuthenticated: !error,
-        data: data,
+        data: data
       });
     }
   }, [data, loading, error]);
@@ -41,28 +41,29 @@ const AuthProvider = ({ children }) => {
     if (logoutState.success)
       setUser({ isLoading: false, isAuthenticated: false, data: null });
   }, [logoutState]);
+
   const logout = async () => {
     if (!error) {
       try {
         setLogoutState((prev) => ({
           ...prev,
-          loading: true,
+          loading: true
         }));
         await axios({
           method: "GET",
           url: urls.auth.logout(),
-          withCredentials: true,
+          withCredentials: true
         });
         setLogoutState((prev) => ({
           ...prev,
           success: true,
-          loading: false,
+          loading: false
         }));
       } catch (e) {
         setLogoutState((prev) => ({
           ...prev,
           error: e,
-          loading: false,
+          loading: false
         }));
       }
     }

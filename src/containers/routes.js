@@ -4,6 +4,7 @@ import Login from "./Login";
 import DefaultLayout from "../layouts/DefaultLayout";
 import PanelLayout from "../layouts/PanelLayout";
 import Signup from "./Signup";
+import TicketPage from "./Panel/Tickets/Page";
 
 // Route Views
 const routes = [
@@ -25,10 +26,15 @@ const routes = [
     component: Home,
   },
   {
-    path: "/panel/*",
+    path: "/panel",
     exact: true,
     layout: PanelLayout,
     component: Home,
+  },  {
+    path: "/panel/ticket",
+    exact: true,
+    layout: PanelLayout,
+    component: TicketPage,
   },
   {
     path: "*",

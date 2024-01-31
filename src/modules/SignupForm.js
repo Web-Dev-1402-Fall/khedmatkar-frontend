@@ -1,8 +1,7 @@
 import { Controller, useForm } from "react-hook-form";
 import TextInput from "../components/TextInput";
 import Button from "../components/Button";
-import { METHOD_POST, sendRequest } from "../common/axiosRequest";
-import urls from "../common/urls";
+import { signupRequest } from "../api/authService";
 
 const fields = [
   {
@@ -58,7 +57,9 @@ const SignupForm = () => {
   } = useForm({ mode: "onChange" });
 
   const submit = (data) => {
-    sendRequest(urls.auth.register(), METHOD_POST, data);
+    signupRequest(data).then(
+
+    )
   };
 
   return (
