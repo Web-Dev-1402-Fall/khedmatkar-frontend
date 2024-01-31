@@ -14,7 +14,7 @@ const Toast = () => {
 
       timeoutIds.push(timeoutId);
     });
-
+    console.log(toasts)
     return () => {
       timeoutIds.forEach((timeoutId) => clearTimeout(timeoutId));
     };

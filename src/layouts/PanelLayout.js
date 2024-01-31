@@ -1,6 +1,7 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../providers/authProvider";
 import Sidebar from "../modules/Sidebar";
+import Toast from "../common/toast";
 
 export default function PanelLayout({ children }) {
   const { user } = useAuth();
@@ -11,5 +12,6 @@ export default function PanelLayout({ children }) {
     <div className="flex flex-col w-full p-16">
       {children}
     </div>
+    <Toast />
   </div>;
 }

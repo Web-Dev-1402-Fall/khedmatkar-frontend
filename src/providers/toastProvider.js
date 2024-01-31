@@ -8,7 +8,6 @@ export const ToastProvider = ({ children }) => {
   const [toasts, setToasts] = useState([]);
 
   const showToast = (message, type = "info") => {
-    console.log(message,type)
     setToasts((prevToasts) => [
       ...prevToasts,
       {
