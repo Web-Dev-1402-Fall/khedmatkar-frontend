@@ -1,22 +1,24 @@
 import { Controller, useForm } from "react-hook-form";
 import TextInput from "../components/TextInput";
 import Button from "../components/Button";
-import { signupRequest } from "../api/authService";
+import { loginRequest, signupRequest } from "../api/authService";
+import { useToast } from "../providers/toastProvider";
+import { useNavigate } from "react-router-dom";
 
 const fields = [
   {
     name: "first_name",
     label: "نام",
     rules: {
-      required: "این فیلد اجباری است",
-    },
+      required: "این فیلد اجباری است"
+    }
   },
   {
     name: "last_name",
     label: "نام خانوادگی",
     rules: {
-      required: "این فیلد اجباری است",
-    },
+      required: "این فیلد اجباری است"
+    }
   },
   {
     name: "email",
@@ -25,16 +27,16 @@ const fields = [
       required: "این فیلد اجباری است",
       pattern: {
         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-        message: "مقدار ورودی معتبر نیست",
-      },
-    },
+        message: "مقدار ورودی معتبر نیست"
+      }
+    }
   },
   {
     name: "username",
     label: "نام‌کاربری",
     rules: {
-      required: "این فیلد اجباری است",
-    },
+      required: "این فیلد اجباری است"
+    }
   },
   {
     name: "password",
@@ -43,23 +45,35 @@ const fields = [
       required: "این فیلد اجباری است",
       minLength: {
         value: 6,
-        message: "حداقل طول رمز عبور ۶ کاراکتر است",
-      },
-    },
-  },
+        message: "حداقل طول رمز عبور ۶ کاراکتر است"
+      }
+    }
+  }
 ];
 
 const SignupForm = () => {
   const {
     control,
     handleSubmit,
-    formState: { errors, isSubmitting, isValid },
+    formState: { errors, isSubmitting, isValid }
   } = useForm({ mode: "onChange" });
-
+  const { showToast } = useToast();
+  const navigate = useNavigate();
   const submit = (data) => {
-    signupRequest(data).then(
+    signupRequest(data).then((response) => {
+      if (response.isSuccess) {
+        loginRequest(data.username, data.password).then((res) => {
+          if (res.isSuccess) {
+            navigate("/panel");
+            window.location.reload();
+          }
+        });
+        navigate("/login");
+      } else {
+        showToast(response.message, "red");
+      }
+    });
 
-    )
   };
 
   return (

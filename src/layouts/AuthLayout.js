@@ -1,7 +1,7 @@
 import Logo from "../components/Logo";
 import { useAuth } from "../providers/authProvider";
 import { Navigate } from "react-router-dom";
-import Toast from "../common/toast";
+import Toast from "../components/Toast";
 
 export default function AuthLayout({ children }) {
   const { user } = useAuth();

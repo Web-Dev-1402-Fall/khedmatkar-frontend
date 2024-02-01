@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import { useToast } from "../providers/toastProvider";
+import classJoin from "../utils/classJoin";
 
 const Toast = () => {
   const { toasts, hideToast } = useToast();
@@ -14,7 +15,7 @@ const Toast = () => {
 
       timeoutIds.push(timeoutId);
     });
-    console.log(toasts)
+    console.log(toasts);
     return () => {
       timeoutIds.forEach((timeoutId) => clearTimeout(timeoutId));
     };
@@ -25,7 +26,7 @@ const Toast = () => {
       {toasts.map((toast) => (
         <div
           key={toast.id}
-          className={`bg-red text-white p-4 mb-2 rounded-md  inline-flex`}
+          className={classJoin(["bg-" + toast.type, "text-white p-4 mb-2 rounded-md  inline-flex"])}
         >
           <p>{toast.message}</p>
           <button className="mr-4 focus:outline-none" onClick={() => hideToast(toast.id)}>

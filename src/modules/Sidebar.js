@@ -2,8 +2,10 @@ import Logo from "../components/Logo";
 import { Link, useLocation } from "react-router-dom";
 import classJoin from "../utils/classJoin";
 import { useAuth } from "../providers/authProvider";
-import { MdCreateNewFolder, MdLogout } from "react-icons/md";
+import { MdCreateNewFolder, MdFolderSpecial, MdList, MdLogout, MdVerifiedUser } from "react-icons/md";
 import { IoListCircleSharp, IoTicketSharp } from "react-icons/io5";
+import { AiFillAccountBook } from "react-icons/ai";
+import { BiSolidUser, BiUser } from "react-icons/bi";
 
 export default function Sidebar() {
   const { logout, user } = useAuth();
@@ -55,13 +57,17 @@ export default function Sidebar() {
 const customerItems = [
   {
     name: "پنل کاربری",
-    icon: IoListCircleSharp,
+    icon: BiSolidUser,
     link: "/panel",
   },
   {
     name: "ثبت درخواست خدمت",
     icon: MdCreateNewFolder,
     link: "/panel/makereq",
+  },  {
+    name: "فهرست درخواست خدمت",
+    icon: MdList,
+    link: "/panel/reqlist",
   },
   {
     name: "ثبت تیکت",

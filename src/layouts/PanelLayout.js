@@ -1,7 +1,7 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../providers/authProvider";
 import Sidebar from "../modules/Sidebar";
-import Toast from "../common/toast";
+import Toast from "../components/Toast";
 
 export default function PanelLayout({ children }) {
   const { user } = useAuth();

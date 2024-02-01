@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import axios from "axios";
 import "./index.css";
+import "jalaali-react-date-picker/lib/styles/index.css";
+
 import App from "./containers/App";
 
 import { RecoilRoot } from "recoil";
