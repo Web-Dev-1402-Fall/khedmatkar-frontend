@@ -31,6 +31,8 @@ const RequestList = () => {
         return serviceReqs.filter(req => req.status === "SPECIALIST_ACCEPTED");
       case "FINDING_SPECIALIST":
         return serviceReqs.filter(req => req.status === "FINDING_SPECIALIST");
+      case "accepted":
+        return serviceReqs.filter(req => req.status === "accepted");
       case "Overdue":
         return serviceReqs.filter(req => new Date(req.reception_date) < new Date());
       default:
@@ -46,6 +48,7 @@ const RequestList = () => {
     { value: "All", label: "همه" },
     { value: "FINDING_SPECIALIST", label: "منتظر‌پاسخ متخصص" },
     { value: "SPECIALIST_ACCEPTED", label: "منتظر تاییدمشتری" },
+    { value: "accepted", label: "پرداخت‌شده" },
     { value: "completed", label: "تمام‌شده" },
     { value: "Overdue", label: "منقضی شده" }
   ];
@@ -79,6 +82,7 @@ const RequestList = () => {
     </div>
     <div
       className="flex items-center justify-between bg-gray-primary text-white rounded-md p-2 my-4">
+      <span className="text-[15px] text-gray-dark mr-2 flex-1"></span>
       <span className="text-[15px] text-gray-dark mr-2 flex-1">آخرین وضعیت</span>
       <span className="text-[15px] text-gray-dark mr-2 flex-1 text-center">آدرس</span>
       <span className="text-[15px] text-gray-dark mr-2 flex-1 text-center">موضوع</span>
@@ -89,6 +93,7 @@ const RequestList = () => {
     {filterServiceReqs(filter).length > 0 ? filterServiceReqs(filter).map((req, index) => (
       <RequestItem status={req.status} description={req.description} address={req.address}
                    reception_date={req.reception_date} id={req.id} price={req.price}
+                   userId={user.data?.is_customer ? req.accepted_specialist : req.customer}
                    role={user.data?.is_customer ? "Customer" : "Specialist"} className="my-1.5" />
     )) : <div className="text-center mt-4">هیچ درخواستی یافت نشد.</div>}
   </div>;
