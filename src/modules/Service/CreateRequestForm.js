@@ -4,9 +4,10 @@ import TextInput from "../../components/TextInput";
 import Button from "../../components/Button";
 import classJoin from "../../utils/classJoin";
 import { InputDatePicker } from "jalaali-react-date-picker";
-import { createTicketsReq } from "../../api/ticketService";
 import { useToast } from "../../providers/toastProvider";
 import { useNavigate, useParams } from "react-router-dom";
+import createServiceRequest from "../../containers/Panel/Services/CreateServiceRequest";
+import { createServiceReq } from "../../api/serviceService";
 
 const fields = [{
   name: "address", label: "آدرس", rules: {
@@ -25,10 +26,11 @@ const CreatRequestForm = () => {
 
   const { showToast } = useToast();
   const submit = async (data) => {
-    const res = await createTicketsReq(data.topic, data.content);
+    const res = await createServiceReq(data.address, data.description,data.reception_date.format("YYYY-MM-DD"));
     console.log(res);
     if (res.isSuccess) {
-      showToast("تیکت باموفقیت ساخته شد.", "green");
+      showToast("درخواست باموفقیت ساخته شد.", "green");
+      showToast("برای مشاهده درخواست به صفحه فهرست بروید.", "blue");
     }
   };
 
@@ -120,7 +122,7 @@ const CreatRequestForm = () => {
     </div>
     <div className="text-left">
       <Button
-        className="mt-6"
+        className="mt-6 bg-[#cd9c6a]"
         disabled={!isValid || isSubmitting}
         onClick={handleSubmit(submit)}>
         ساخت درخواست

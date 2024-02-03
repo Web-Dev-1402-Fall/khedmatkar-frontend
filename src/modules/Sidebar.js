@@ -83,8 +83,8 @@ const specialistItems = [
   },
   {
     name: "فهرست درخواست خدمت",
-    icon: MdCreateNewFolder,
-    link: "/panel/makereq",
+    icon: MdList,
+    link: "/panel/reqlist",
   },
   {
     name: "ثبت تیکت",

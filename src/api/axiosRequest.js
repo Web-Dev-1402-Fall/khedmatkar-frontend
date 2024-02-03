@@ -3,6 +3,7 @@ import axios from "axios";
 export const METHOD_POST = "POST";
 export const METHOD_GET = "GET";
 export const METHOD_PUT = "PUT";
+export const METHOD_PATCH = "PATCH";
 export async function sendRequest(url, method, requestData) {
   return axios
     .request({

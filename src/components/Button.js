@@ -12,6 +12,7 @@ const Button = (props) => {
   const mode = {
     primary: "bg-gray-primary text-white active:bg-gray-secondary",
     secondary: "bg-transparent border border-gray-primary text-gray-primary",
+    brand: "bg-[#cd9c6a] border border-gray-primary text-gray-primary",
     danger: "bg-red text-white",
   }[variant];
 

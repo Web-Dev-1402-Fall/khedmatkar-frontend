@@ -26,7 +26,7 @@ const Toast = () => {
       {toasts.map((toast) => (
         <div
           key={toast.id}
-          className={classJoin(["bg-" + toast.type, "text-white p-4 mb-2 rounded-md  inline-flex"])}
+          className={classJoin(["bg-green", "text-white p-4 mb-2 rounded-md  inline-flex"])}
         >
           <p>{toast.message}</p>
           <button className="mr-4 focus:outline-none" onClick={() => hideToast(toast.id)}>

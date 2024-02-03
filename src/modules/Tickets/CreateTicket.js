@@ -104,7 +104,7 @@ const CreateTicket = () => {
       </div>
       <div className="text-left">
         <Button
-          className="my-4"
+          className="my-4 bg-[#cd9c6a]"
           disabled={!isValid || isSubmitting}
           onClick={handleSubmit(submit)}
         >

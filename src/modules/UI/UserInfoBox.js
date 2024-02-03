@@ -20,10 +20,6 @@ const UserInfoBox = () => {
           <span>{user.data?.email}</span>
         </div>
         <div className="flex items-center flex-1">
-          <span className="ml-2">موجودی حساب:</span>
-          <span>{toPersianDigit(user.data?.balance)}</span>
-        </div>
-        <div className="flex items-center flex-1">
           <span className="ml-2">نوع حساب:</span>
           <span>{user.data?.is_admin ? "مدیر" : user.data?.is_specialist ? "متخصص" : "مشتری"}</span>
         </div>

@@ -11,8 +11,17 @@ const urls = {
     list: () => `${API_BASE_URL}/ticket/list/`,
     create: () => `${API_BASE_URL}/ticket/create/`,
     answer: () => `${API_BASE_URL}/ticket/comments/add/`,
-    details: () => `${API_BASE_URL}/ticket/list/`
-  }, payment: {}, service: {},
+    details: (uuid) => `${API_BASE_URL}/ticket/details/?uuid=${uuid}`
+  }, payment: {
+    increaseFund:(  )=>`${API_BASE_URL}/payment/wallets/`
+  }, service: {
+    create: () => `${API_BASE_URL}/service/service-requests/create/`,
+    acceptBySpecialist: (id) => `${API_BASE_URL}/service/service-requests/${id}/update-by-specialist/`,
+    acceptByCustomer: (id) => `${API_BASE_URL}/service/service-requests/service-request-final-decision/${id}/`,
+    completeByCustomer: (id) => `${API_BASE_URL}/service/service-requests/${id}/complete/`,
+    updateAddress: (id) => `${API_BASE_URL}/service/service-requests/${id}/update-address/`,
+    getServiceRequestList: () => `${API_BASE_URL}/service/service-requests/`
+  },
   common: {
     getMyPortfolio: () => `${API_BASE_URL}/user/portfolio`,
     joinWaitlist: () => `${API_BASE_URL}/join`,

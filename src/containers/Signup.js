@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import SignupForm from "../modules/SignupForm";
+import SignupForm from "../modules/Authentication/SignupForm";
 
 export default function Signup() {
   return <div className="flex flex-col w-full max-w-96 py-10">

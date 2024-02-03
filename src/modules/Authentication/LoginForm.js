@@ -1,9 +1,9 @@
 import { Controller, useForm } from "react-hook-form";
-import TextInput from "../components/TextInput";
-import Button from "../components/Button";
-import { useToast } from "../providers/toastProvider";
+import TextInput from "../../components/TextInput";
+import Button from "../../components/Button";
+import { useToast } from "../../providers/toastProvider";
 import { useNavigate } from "react-router-dom";
-import { loginRequest } from "../api/authService";
+import { loginRequest } from "../../api/authService";
 
 const fields = [
   {
