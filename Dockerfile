@@ -5,7 +5,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install project dependencies
-RUN npm ci --no-audit
+RUN npm install
 
 # Copy application code to the working directory
 COPY . .
@@ -16,8 +16,5 @@ RUN npm run build
 # Install serve globally
 RUN npm install -g serve
 
-# Expose the port that the app will run on
-EXPOSE 80
-
 # Define the command to run your app
-CMD ["serve", "-s", "build","-p","80"]
+CMD ["serve", "-s", "build","-p","3000"]
