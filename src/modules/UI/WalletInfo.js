@@ -36,7 +36,7 @@ function WalletInfo() {
     });
   };
   return (
-    <div className="stats bg-brand-dark text-primary-content w-[%50] my-4 rounded-md">
+    <div className="stats bg-brand-dark text-primary-content w-[40%] my-4 rounded-md">
 
       <div className="stat">
         <div className="stat-title">موجودی حساب</div>

@@ -5,7 +5,7 @@ import DefaultLayout from "../layouts/DefaultLayout";
 import PanelLayout from "../layouts/PanelLayout";
 import Signup from "./Signup";
 import TicketPage from "./Panel/Tickets/Page";
-import CreateServiceRequest from "./Panel/Services/CreateServiceRequest";
+import Page from "./Panel/Services/Page";
 import RequestList from "../modules/Service/RequestList";
 
 // Route Views
@@ -41,7 +41,7 @@ const routes = [
     path: "/panel/makereq",
     exact: true,
     layout: PanelLayout,
-    component: CreateServiceRequest,
+    component: Page,
   },{
     path: "/panel/reqlist",
     exact: true,

@@ -5,6 +5,7 @@ import { acceptRequestByCustomerReq, acceptRequestBySpecialistReq } from "../../
 import TextInput from "../../components/TextInput";
 import { useState } from "react";
 import { useToast } from "../../providers/toastProvider";
+import UpdateAddress from "./UpdateAddress";
 
 const RequestItem = (props) => {
   const { status, description, reception_date, price, address, id, className, role } = props;
@@ -55,8 +56,13 @@ const ServiceOperations = ({ status, role, id }) => {
               onClick={() => document.getElementById("AcceptModal").showModal()}> قبول درخواست</Button>
       <AcceptRequestModal id={id} />
     </div>;
+  }else if(status ==="FINDING_SPECIALIST" && role ==="Customer"){
+    return <div className="inline-flex">
+      <Button variant="primary" className="py-2.5 mx-1"
+              onClick={() => document.getElementById("UpdateAddressModal").showModal()}> تغییر آدرس</Button>
+      <UpdateAddress id={id} />
+    </div>;
   }
-  ;
   return <div className="inline-flex"></div>;
 };
 const AcceptRequestModal = ({ id }) => {

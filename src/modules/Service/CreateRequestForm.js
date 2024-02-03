@@ -6,7 +6,7 @@ import classJoin from "../../utils/classJoin";
 import { InputDatePicker } from "jalaali-react-date-picker";
 import { useToast } from "../../providers/toastProvider";
 import { useNavigate, useParams } from "react-router-dom";
-import createServiceRequest from "../../containers/Panel/Services/CreateServiceRequest";
+import createServiceRequest from "../../containers/Panel/Services/Page";
 import { createServiceReq } from "../../api/serviceService";
 
 const fields = [{
