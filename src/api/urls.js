@@ -13,7 +13,7 @@ const urls = {
     answer: () => `${API_BASE_URL}/ticket/comments/add/`,
     details: (uuid) => `${API_BASE_URL}/ticket/details/?uuid=${uuid}`
   }, payment: {
-    increaseFund:(  )=>`${API_BASE_URL}/payment/wallets/`
+    increaseFund:(  )=>`${API_BASE_URL}/payment/wallets/add/`
   }, service: {
     create: () => `${API_BASE_URL}/service/service-requests/create/`,
     acceptBySpecialist: (id) => `${API_BASE_URL}/service/service-requests/${id}/update-by-specialist/`,
