@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://localhost:8000";
+const API_BASE_URL = "http://localhost:80/api";
 
 const urls = {
   auth: {
@@ -23,8 +23,6 @@ const urls = {
     getServiceRequestList: () => `${API_BASE_URL}/service/service-requests/`
   },
   common: {
-    getMyPortfolio: () => `${API_BASE_URL}/user/portfolio`,
-    joinWaitlist: () => `${API_BASE_URL}/join`,
     image: (address) => `${API_BASE_URL}/${address}`
   }
 };
