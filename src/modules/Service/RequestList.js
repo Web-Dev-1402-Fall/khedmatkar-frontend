@@ -1,19 +1,19 @@
-import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import classJoin from "../../utils/classJoin";
 import RequestItem from "./RequestItem";
-import Button from "../../components/Button";
 import { fetchActiveRequestListReq } from "../../api/serviceService";
 import { useAuth } from "../../providers/authProvider";
+import { MY_REQUEST_REFRESH, REFRESH_SUCCESS, useServiceReducer } from "../../providers/serviceProvider";
 
 const RequestList = () => {
-  const [serviceReqs, setServiceReqs] = useState([]);
+  const { state, dispatch } = useServiceReducer();
   const { user } = useAuth();
   useEffect(() => {
     const fetchServiceRequests = async () => {
+      dispatch({ type: MY_REQUEST_REFRESH });
       const res = await fetchActiveRequestListReq();
       if (res.isSuccess) {
-        setServiceReqs(res.data);
+        dispatch({ type: REFRESH_SUCCESS, payload: res.data });
       }
     };
 
@@ -26,17 +26,17 @@ const RequestList = () => {
   const filterServiceReqs = (filter) => {
     switch (filter) {
       case "completed":
-        return serviceReqs.filter(req => req.status === "completed");
+        return state.requests.filter(req => req.status === "completed");
       case "SPECIALIST_ACCEPTED":
-        return serviceReqs.filter(req => req.status === "SPECIALIST_ACCEPTED");
+        return state.requests.filter(req => req.status === "SPECIALIST_ACCEPTED");
       case "FINDING_SPECIALIST":
-        return serviceReqs.filter(req => req.status === "FINDING_SPECIALIST");
+        return state.requests.filter(req => req.status === "FINDING_SPECIALIST");
       case "accepted":
-        return serviceReqs.filter(req => req.status === "accepted");
+        return state.requests.filter(req => req.status === "accepted");
       case "Overdue":
-        return serviceReqs.filter(req => new Date(req.reception_date) < new Date());
+        return state.requests.filter(req => new Date(req.reception_date) < new Date());
       default:
-        return serviceReqs;
+        return state.requests;
     }
   };
 
@@ -56,9 +56,6 @@ const RequestList = () => {
   return <div>
     <div className="flex items-center justify-between w-full">
       <h2 className="text-[19px] font-bold">لیست درخواست خدمت</h2>
-      {/*<Link to={TICKETS + "/" + project_uuid + "/create"}>*/}
-      {/*  <Button variant="primary" className="py-2.5">+ تیکت جدید</Button>*/}
-      {/*</Link>*/}
     </div>
     <p className="text-[14px] mt-4">در این صفحه، لیست درخواست‌خدمت‌ها و درخواست‌هایی که در
       سازمان ثبت شده‌اند نمایش داده‌شده اند.

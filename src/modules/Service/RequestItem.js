@@ -11,6 +11,7 @@ import { useState } from "react";
 import { useToast } from "../../providers/toastProvider";
 import UpdateAddress from "./UpdateAddress";
 import ProfileImage from "../../components/ProfileImage";
+import { UPDATE_STATUS, useServiceReducer } from "../../providers/serviceProvider";
 
 const RequestItem = (props) => {
   const { status, description, reception_date, price, address, id, className, role, userId } = props;
@@ -46,10 +47,11 @@ const RequestItem = (props) => {
 
 const ServiceOperations = ({ status, role, id }) => {
   const { showToast } = useToast();
-
+  const { dispatch } = useServiceReducer();
   const acceptSpecialist = () => {
     acceptRequestByCustomerReq(id).then((res) => {
         if (res.isSuccess) {
+          dispatch({ type: UPDATE_STATUS, payload: { id: id, status: "accepted" } });
           showToast("متخصص با موفقیت تایید شد.");
         }
       }
@@ -60,7 +62,7 @@ const ServiceOperations = ({ status, role, id }) => {
     completeRequestByCustomerReq(id).then((res) => {
         if (res.isSuccess) {
           showToast("درخواست با موفقیت خاتمه یافت.");
-          window.location.reload();
+          dispatch({ type: UPDATE_STATUS, payload: { id: id, status: "completed" } });
         }
       }
     );
@@ -91,13 +93,13 @@ const ServiceOperations = ({ status, role, id }) => {
   return <div className="inline-flex"></div>;
 };
 const AcceptRequestModal = ({ id }) => {
-
+  const { dispatch } = useServiceReducer();
   const [value, setValue] = useState(0);
   const { showToast } = useToast();
   const acceptRequest = () => {
-    console.log(id, value);
     acceptRequestBySpecialistReq(id, value).then((res) => {
         if (res.isSuccess) {
+          dispatch({ type: UPDATE_STATUS, payload: { id: id, status: "SPECIALIST_ACCEPTED", price: value } });
           showToast("قیمت گذاری با موفقیت انجام شد.");
         }
       }

@@ -27,7 +27,6 @@ const CreatRequestForm = () => {
   const { showToast } = useToast();
   const submit = async (data) => {
     const res = await createServiceReq(data.address, data.description,data.reception_date.format("YYYY-MM-DD"));
-    console.log(res);
     if (res.isSuccess) {
       showToast("درخواست باموفقیت ساخته شد.", "green");
       showToast("برای مشاهده درخواست به صفحه فهرست بروید.", "blue");
